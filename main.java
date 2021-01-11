@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class main {
@@ -5,20 +7,26 @@ public class main {
 
     public static void main(String[] args) {
         int[] numArray = {6, 3, 1, 8, 5};
-        String[] strArray = {"h","e","l","l","o"};
-        sortNums(numArray);
-        sortString(strArray);
-        sumValues(numArray);
-        averageValue(numArray);
-        valueExists(numArray, 1);
-       // removeElement(numArray, 3);
-        copyArray(numArray);
-        insertAt(numArray, 2, 90000);
-        maxNumber(numArray);
-        minNumber(numArray);
-        reverseArray(numArray);
-        checkForDuplicates(numArray);
-        c(strArray);
+        int[] numArray2 = {1, 9, 1, 3, 7};
+        String[] strArray = {"h", "e", "l", "l", "o"};
+        String[] array2 = {"a", "b", "c", "d", "e"};
+        //   sortNums(numArray);
+        // sortString(strArray);
+        // sumValues(numArray);
+        // averageValue(numArray);
+        // valueExists(numArray, 1);
+        // removeElement(numArray, 3);
+        // copyArray(numArray);
+        // insertAt(numArray, 2, 90000);
+        // maxNumber(numArray);
+        // minNumber(numArray);
+        // reverseArray(numArray);
+        // checkForDuplicates(numArray);
+        // commSetsTwoArrays(strArray, array2);
+        commSetsTwoArraysInt(numArray, numArray2);
+        secondLargest(numArray);
+        secondSmallest(numArray);
+        arrayToArrayList(numArray);
     }
 
     public static void printArraySorted(int[] array) {
@@ -153,11 +161,11 @@ public class main {
 
     }
 
-    public static void minNumber(int[] array){
+    public static void minNumber(int[] array) {
         int minValue;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
-                if(array[i] < array[j]){
+                if (array[i] < array[j]) {
                     int temp = array[i];
                     array[i] = array[j];
                     array[j] = temp;
@@ -169,47 +177,115 @@ public class main {
 
     }
 
-    public static void reverseArray(int[] array){
+    public static void reverseArray(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {
             int temp = array[i];
             array[i] = array[array.length - i - 1];
             array[array.length - i - 1] = temp;
 
-            }
-        System.out.println("Array reversed :" +Arrays.toString(array));
         }
-    public static void checkForDuplicates(int[] array){
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i+ 1; j < array.length; j++) {
-                if(array[i] == array[j]){
-                    System.out.println("Duplicate element is: "+array[i]);
-                }
-
-            }
-            
-        }
-
+        System.out.println("Array reversed :" + Arrays.toString(array));
     }
 
-    public static void checkForDuplicatesString(String[] array){
+    public static void checkForDuplicates(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = i+1; j < array.length; j++) {
-                if(array[i].equals(array[j])){
-                    System.out.println("Duplicate element is : " +array[i]);
-
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    System.out.println("Duplicate element is: " + array[i]);
                 }
 
             }
 
         }
+
     }
 
-    public static void commSetsTwoArrays(String[] array, String[] otherArray){
-        for (int i = 0; i < ; i++) {
-            
+    public static void checkForDuplicatesString(String[] array) {
+        String[] testArray;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i].equals(array[j])) {
+                    System.out.println("Duplicate element is : " + array[i]);
+
+                }
+
+            }
+
         }
     }
 
+    public static void commSetsTwoArrays(String[] array, String[] otherArray) {
+        String[] temp = new String[array.length]; // common set
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < otherArray.length; j++) {
+                if (array[i].equals(otherArray[i])) {
+                    temp[i] = array[i];
 
+                }
+
+            }
+
+        }
+        System.out.println("Common set is: " + Arrays.toString(temp));
+
+    }
+
+
+    public static void commSetsTwoArraysInt(int[] array, int[] otherArray) {
+        int[] temp = new int[array.length]; // common set
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < otherArray.length; j++) {
+                if (array[i] == otherArray[i]) {
+                    temp[i] = array[i];
+                    System.out.println(temp[i]);
+                }
+
+            }
+            System.out.println("Common set : " + Arrays.toString(temp));
+
+        }
+    }
+
+    public static void secondLargest(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] < array[j]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        System.out.println("Second largest : " + array[1]);
+
+    }
+
+    public static void secondSmallest(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        System.out.println("Second smallest : " + array[1]);
+
+    }
+
+    public static void arrayToArrayList(int[] array) {
+        ArrayList<Integer> arrayConverted = new ArrayList<Integer>();
+        for (int i = 0; i < array.length; i++) {
+            arrayConverted.add(array[i]);
+        }
+        System.out.println("ArrayList Printed:" + arrayConverted.toString());
+    }
 }
+
+
+
+
+
+
 
