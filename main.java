@@ -5,18 +5,20 @@ public class main {
 
     public static void main(String[] args) {
         int[] numArray = {6, 3, 1, 8, 5};
-        String[] strArray = {"fgasdfasfas"};
+        String[] strArray = {"h","e","l","l","o"};
         sortNums(numArray);
         sortString(strArray);
         sumValues(numArray);
         averageValue(numArray);
         valueExists(numArray, 1);
-        removeElement(numArray, 3);
+       // removeElement(numArray, 3);
         copyArray(numArray);
         insertAt(numArray, 2, 90000);
         maxNumber(numArray);
         minNumber(numArray);
         reverseArray(numArray);
+        checkForDuplicates(numArray);
+        c(strArray);
     }
 
     public static void printArraySorted(int[] array) {
@@ -176,8 +178,36 @@ public class main {
             }
         System.out.println("Array reversed :" +Arrays.toString(array));
         }
-    public static void checkForDuplicates(int[] array, int value){
+    public static void checkForDuplicates(int[] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i+ 1; j < array.length; j++) {
+                if(array[i] == array[j]){
+                    System.out.println("Duplicate element is: "+array[i]);
+                }
 
+            }
+            
+        }
+
+    }
+
+    public static void checkForDuplicatesString(String[] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i+1; j < array.length; j++) {
+                if(array[i].equals(array[j])){
+                    System.out.println("Duplicate element is : " +array[i]);
+
+                }
+
+            }
+
+        }
+    }
+
+    public static void commSetsTwoArrays(String[] array, String[] otherArray){
+        for (int i = 0; i < ; i++) {
+            
+        }
     }
 
 
